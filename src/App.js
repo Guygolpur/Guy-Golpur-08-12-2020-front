@@ -18,7 +18,7 @@ function App() {
         <Route path="/" component={HomePage} exact />
         <Route path="/about" component={AboutPage} />
         <Route path="/email-list" component={EmailList} />
-        <Route path="/email/:emailAddress" component={EmailPage} />
+        <Route path="/email/:senderEmailId" component={EmailPage} />
       </div>
     </Router>
   );

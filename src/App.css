@@ -46,6 +46,17 @@ nav a:hover {
   color: white;
 }
 
+.email-list-item {
+  text-decoration: none;
+  color: black;
+  padding: 16px 0 0 0;
+}
+
+.email-list-item p {
+  padding-bottom: 32px;
+  border-bottom: 2px solid black;
+}
+
 #page-body {
   max-width: 700px;
   margin: auto;
