@@ -1,8 +1,8 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
 import emailContent from './email-content'
+import EmailList from '../components/EmailList'
 
-const EmailList = () => {
+const EmailListPage = () => {
 
     var userEmailAddress = 'guygolpur@gmail.com'
     const emails = emailContent.find(email => email.receiveremailAddress === userEmailAddress)
@@ -17,16 +17,9 @@ const EmailList = () => {
         <>
             <h1>{userEmailAddress} Emails</h1>
             <hr />
-            {inboxesContent.map((email, key) => (
-                <Link className="email-list-item" key={key} to={`/email/${email.id}`}>
-                    <h3>from : {email.senderEmailAddress}</h3>
-                    <h4>Subject: {email.subject}</h4>
-                    <p>Message brief: {email.messageContent.substring(0, 30)}...</p>
-                    <hr />
-                </Link>
-            ))}
+            <EmailList inboxesContent={inboxesContent}/>
         </>
     )
 }
 
-export default EmailList
+export default EmailListPage
