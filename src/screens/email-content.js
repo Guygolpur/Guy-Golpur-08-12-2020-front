@@ -1,6 +1,6 @@
 const emails = [
     {
-        receiveremailAddress: 'guygolpur@gmail.com',
+        receiverEmailAddress: 'guygolpur@gmail.com',
         inbox: [
             {
                 id: 0,
@@ -41,7 +41,7 @@ const emails = [
         ]
     },
     {
-        receiveremailAddress: 'golpur@hotmail.com',
+        receiverEmailAddress: 'golpur@hotmail.com',
         inbox: [
             {
                 id: 0,

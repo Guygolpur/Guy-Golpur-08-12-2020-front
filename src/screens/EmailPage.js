@@ -8,9 +8,9 @@ const EmailPage = ({ match }) => {
     let senderEmailId = match.params.senderEmailId
     senderEmailId = parseInt(senderEmailId)
     console.log('senderEmailId: ', senderEmailId)
-    var userEmailAddress = 'guygolpur@gmail.com'
+    var receiverEmailAddress = 'guygolpur@gmail.com'
 
-    const email = emailContent.find(email => email.receiveremailAddress === userEmailAddress)
+    const email = emailContent.find(email => email.receiverEmailAddress === receiverEmailAddress)
     if (!email) return <PageNotFound />
 
     var emailById = []
@@ -26,7 +26,7 @@ const EmailPage = ({ match }) => {
 
     return (
         <>
-            <h1>{email.receiveremailAddress}</h1>
+            <h1>{email.receiverEmailAddress}</h1>
             <hr />
             <div>{emailById.map((content, key) => (
                 <div key={key}>

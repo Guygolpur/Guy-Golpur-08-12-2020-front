@@ -4,8 +4,8 @@ import EmailList from '../components/EmailList'
 
 const EmailListPage = () => {
 
-    var userEmailAddress = 'guygolpur@gmail.com'
-    const emails = emailContent.find(email => email.receiveremailAddress === userEmailAddress)
+    var receiverEmailAddress = 'guygolpur@gmail.com'
+    const emails = emailContent.find(email => email.receiverEmailAddress === receiverEmailAddress)
     if (!emails) return <h1>Email does not exist</h1>
 
     var inboxesContent = []
@@ -15,7 +15,7 @@ const EmailListPage = () => {
 
     return (
         <>
-            <h1>{userEmailAddress} Emails</h1>
+            <h1>{receiverEmailAddress} Emails</h1>
             <hr />
             <EmailList inboxesContent={inboxesContent}/>
         </>
