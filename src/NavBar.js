@@ -1,6 +1,8 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
+const accountEmailAddress = "guygolpur@gmail.com"
+
 const NavBar = () => (
     <nav>
         <ul>
@@ -8,10 +10,13 @@ const NavBar = () => (
                 <Link to="/">Home</Link>
             </li>
             <li>
-                <Link to="/about">About</Link>
+                <Link to="/email-list">Inbox</Link>
             </li>
             <li>
-                <Link to="/email-list">Emails</Link>
+                <Link to="/sent-email-list">Sent</Link>
+            </li>
+            <li>
+                <Link to="/composeNewEmail">New</Link>
             </li>
         </ul>
     </nav>

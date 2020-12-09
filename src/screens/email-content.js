@@ -4,8 +4,8 @@ const emails = [
         inbox: [
             {
                 id: 0,
-                senderEmailAddress: 'from@gmail.com',
-                subject: 'check',
+                senderEmailAddress: 'golpur@hotmail.com',
+                subject: 'its Guy from hotmail!',
                 messageContent: 'I am here only to check your email app :)'
             },
             {
@@ -38,6 +38,14 @@ const emails = [
                 subject: 'Advertisment',
                 messageContent: 'I am here only to DOUBLE check your email app :)'
             }
+        ],
+        sent: [
+            {
+                id: 0,
+                receiverEmailAddress: 'golpur@hotmail.com',
+                subject: 'guy golpur from gmail!',
+                messageContent: 'Hi, can you read this content?'
+            }
         ]
     },
     {
@@ -48,6 +56,20 @@ const emails = [
                 senderEmailAddress: 'from2@gmail.com',
                 subject: 'dear Golpur',
                 messageContent: 'Hi, can you read this content?'
+            },
+            {
+                id: 1,
+                senderEmailAddress: 'guygolpur@gmail.com',
+                subject: 'guy golpur from gmail!',
+                messageContent: 'Hi, can you read this content?'
+            }
+        ],
+        sent: [
+            {
+                id: 0,
+                receiverEmailAddress: 'guygolpur@gmail.com',
+                subject: 'its Guy from hotmail!',
+                messageContent: 'I am here only to check your email app :)'
             }
         ]
     }

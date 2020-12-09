@@ -1,34 +1,30 @@
-import React from 'react'
-import emailContent from './email-content'
-import EmailList from '../components/EmailList'
-import PageNotFound from './PageNotFound'
+import React, { useState, useEffect } from 'react'
 
 const EmailPage = ({ match }) => {
-
+    var emailAccount = 'guygolpur@gmail.com'
     let senderEmailId = match.params.senderEmailId
     senderEmailId = parseInt(senderEmailId)
-    console.log('senderEmailId: ', senderEmailId)
-    var receiverEmailAddress = 'guygolpur@gmail.com'
-
-    const email = emailContent.find(email => email.receiverEmailAddress === receiverEmailAddress)
-    if (!email) return <PageNotFound />
-
-    var emailById = []
-    email.inbox.map((inbox, key) => {
-        if (inbox.id === senderEmailId) emailById = emailById.concat(inbox)
-    })
-
-    var otherEmails = []
-    email.inbox.map((inbox, key) => {
-        if (inbox.id !== senderEmailId) otherEmails = otherEmails.concat(inbox)
-    })
+    const [emailContent, setEmailContent] = useState([]);
+    
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const result = await fetch(`/api/email/${senderEmailId}/${emailAccount}`)
+                const body = await result.json()
+                setEmailContent(arr => [...arr, body])
+            } catch (err) {
+                console.log(`error: ${err}`)
+            }
+        }
+        fetchData()
+    }, [emailAccount]);
 
 
     return (
         <>
-            <h1>{email.receiverEmailAddress}</h1>
+            <h1>{emailAccount}</h1>
             <hr />
-            <div>{emailById.map((content, key) => (
+            <div>{emailContent.map((content, key) => (
                 <div key={key}>
                     <h2>from : {content.senderEmailAddress}</h2>
                     <h2>Subject: {content.subject}</h2>
@@ -37,9 +33,6 @@ const EmailPage = ({ match }) => {
                 </div>
             ))}
             </div>
-
-            <h1>Other Emails</h1>
-            <EmailList inboxesContent={otherEmails} />
         </>
     )
 }
