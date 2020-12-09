@@ -1,11 +1,11 @@
 import React, { useState } from 'react'
 
-const ComposeEmailForm = ({ emailAccount, setEmailInfo }) => {
+const ComposeEmailForm = (props) => {
     const [receiverEmailAddress, setReceiverEmailAddress] = useState('')
     const [emailSubject, setEmailSubject] = useState('')
     const [emailContent, setEmailContent] = useState('')
-    const senderEmailAccount = 'guygolpur@gmail.com'
-    
+    const senderEmailAccount = props.accountEmailAddress
+
     const addComment = async () => {
         const result = await fetch(`/api/composeNewEmail`, {
             method: 'post',
@@ -15,8 +15,6 @@ const ComposeEmailForm = ({ emailAccount, setEmailInfo }) => {
             }
         })
         const body = await result.json()
-        console.log('body: ', body)
-        // setEmailInfo(body)
     }
 
     return (

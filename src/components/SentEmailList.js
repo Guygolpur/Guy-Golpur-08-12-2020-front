@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 
-const SentEmailList = () => {
-    var emailAccount = 'guygolpur@gmail.com'
+const SentEmailList = (props) => {
+    var emailAccount = props.accountEmailAddress
     const [sentEmails, setSentEmails] = useState([]);
 
     useEffect(() => {
@@ -21,7 +21,6 @@ const SentEmailList = () => {
     return (
         <>
             <h3>Sent Items</h3>
-            {console.log('sentEmails:', sentEmails)}
             {sentEmails.map((sentEmail, key) => (
                 <div key={key}>
                     <h3>to : {sentEmail.receiverEmailAddress}</h3>

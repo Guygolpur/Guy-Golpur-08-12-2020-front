@@ -12,6 +12,9 @@ import SentEmailList from './components/SentEmailList'
 import ComposeEmailForm from './components/ComposeEmailForm'
 import './App.css'
 
+const accountEmailAddress = "guygolpur@gmail.com"
+
+
 function App() {
   return (
     <Router>
@@ -20,10 +23,10 @@ function App() {
         <div id="page-body"></div>
         <Switch>
           <Route path="/" component={HomePage} exact />
-          <Route path="/email-list" component={EmailListPage} />
-          <Route path="/email/:senderEmailId" component={EmailPage} />
-          <Route path="/sent-email-list" component={SentEmailList} />
-          <Route path="/composeNewEmail" component={ComposeEmailForm}/>
+          <Route path="/email-list" render={(props) => <EmailListPage {...props} accountEmailAddress={accountEmailAddress} />} />
+          <Route path="/email/:senderEmailId/:accountEmailAddress" component={EmailPage} />
+          <Route path="/sent-email-list" render={(props) => <SentEmailList {...props} accountEmailAddress={accountEmailAddress} />} />
+          <Route path="/composeNewEmail" render={(props) => <ComposeEmailForm {...props} accountEmailAddress={accountEmailAddress} />} />
           <Route component={PageNotFound} />
         </Switch>
       </div>

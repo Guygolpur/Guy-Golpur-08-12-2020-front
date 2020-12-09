@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import EmailList from '../components/EmailList'
 
-const EmailListPage = () => {
-    var emailAccount = 'guygolpur@gmail.com'
+const EmailListPage = (props) => {
+    var emailAccount = props.accountEmailAddress
     const [emailList, setEmailList] = useState([]);
 
     useEffect(() => {
@@ -27,7 +27,7 @@ const EmailListPage = () => {
         <>
             <h1>{emailAccount} Emails</h1>
             <hr />
-            <EmailList inboxesContent={inboxesContent} />
+            <EmailList inboxesContent={inboxesContent} accountEmailAddress={emailAccount}/>
         </>
     )
 }

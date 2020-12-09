@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react'
 
 const EmailPage = ({ match }) => {
-    var emailAccount = 'guygolpur@gmail.com'
+    var emailAccount = match.params.accountEmailAddress
     let senderEmailId = match.params.senderEmailId
     senderEmailId = parseInt(senderEmailId)
     const [emailContent, setEmailContent] = useState([]);
-    
+
     useEffect(() => {
         const fetchData = async () => {
             try {
