@@ -4,12 +4,17 @@ const ComposeEmailForm = (props) => {
     const [receiverEmailAddress, setReceiverEmailAddress] = useState('')
     const [emailSubject, setEmailSubject] = useState('')
     const [emailContent, setEmailContent] = useState('')
-    const senderEmailAccount = props.accountEmailAddress
+    const senderEmailAddress = props.accountEmailAddress
 
     const addComment = async () => {
+        var today = new Date(), date, time
+
+        date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
+        time = today.getHours() + ':' + (today.getMinutes());
+
         const result = await fetch(`/api/composeNewEmail`, {
             method: 'post',
-            body: JSON.stringify({ senderEmailAccount, receiverEmailAddress, subject: emailSubject, messageContent: emailContent }),
+            body: JSON.stringify({ senderEmailAddress, receiverEmailAddress, subject: emailSubject, messageContent: emailContent, date, time }),
             headers: {
                 'Content-Type': 'application/json',
             }
