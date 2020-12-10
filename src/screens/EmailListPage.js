@@ -24,11 +24,11 @@ const EmailListPage = (props) => {
     ))
 
     return (
-        <>
-            <h1>{emailAccount} Emails</h1>
+        <div className="page-body">
+            <h1>Inbox</h1>
             <hr />
-            <EmailList inboxesContent={inboxesContent} accountEmailAddress={emailAccount}/>
-        </>
+            <EmailList inboxesContent={inboxesContent} accountEmailAddress={emailAccount} />
+        </div>
     )
 }
 

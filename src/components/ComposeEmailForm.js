@@ -24,7 +24,7 @@ const ComposeEmailForm = (props) => {
 
     return (
         <div id="send-email-form">
-            <h3>Compose New Email</h3>
+            <h1>Compose New Email</h1>
             <label>
                 Send To:
             <input type="text" value={receiverEmailAddress} onChange={(event) => setReceiverEmailAddress(event.target.value)} />
@@ -35,7 +35,7 @@ const ComposeEmailForm = (props) => {
             </label>
             <label>
                 Email Content:
-            <textarea rows="4" cols="50" value={emailContent} onChange={(event) => setEmailContent(event.target.value)} />
+            <textarea rows="12" cols="80" value={emailContent} onChange={(event) => setEmailContent(event.target.value)} />
             </label>
             <button onClick={() => addComment()}>Send Email</button>
         </div>

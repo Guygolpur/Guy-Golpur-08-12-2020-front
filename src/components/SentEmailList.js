@@ -1,8 +1,23 @@
 import React, { useState, useEffect } from 'react'
+import SentEmailPage from '../screens/SentEmailPage'
+import { Link } from 'react-router-dom'
+import { makeStyles } from '@material-ui/core/styles'
+import Card from '@material-ui/core/Card'
+import CardActionArea from '@material-ui/core/CardActionArea'
+import CardContent from '@material-ui/core/CardContent'
+import Typography from '@material-ui/core/Typography'
+
+const useStyles = makeStyles({
+    root: {
+        maxWidth: '30%',
+    }
+});
 
 const SentEmailList = (props) => {
     var emailAccount = props.accountEmailAddress
     const [sentEmails, setSentEmails] = useState([]);
+
+    const classes = useStyles();
 
     useEffect(() => {
         const fetchData = async () => {
@@ -18,20 +33,34 @@ const SentEmailList = (props) => {
     }, [emailAccount]);
 
 
+
     return (
-        <>
-            <h3>Sent Items</h3>
+        <div className="page-body">
+            <h1>Sent Items</h1>
+            <hr />
             {sentEmails.slice(0).reverse().map((sentEmail, key) => (
-                <div key={key}>
-                    <h3>to : {sentEmail.receiverEmailAddress}</h3>
-                    <h5>{sentEmail.date}</h5>
-                    <h5>{sentEmail.time}</h5>
-                    <h4>Subject: {sentEmail.subject}</h4>
-                    <p>Message brief: {sentEmail.messageContent.substring(0, 30)}...</p>
-                    <hr />
-                </div>
+                <Card className={classes.root}>
+                    <CardActionArea >
+                        <CardContent>
+                            <Link className="email-list-item" key={key} to={`/single-email-sent/${sentEmail.id}/${emailAccount}`}>
+                                <div key={key}>
+                                    <Typography gutterBottom variant="h5" component="h2" className="email-list-item">
+                                        Subject: {sentEmail.subject}
+                                    </Typography>
+                                    <h3>to : {sentEmail.receiverEmailAddress}</h3>
+                                    <Typography variant="body2" color="textSecondary" component="p">
+                                        {sentEmail.date} at {sentEmail.time}
+                                    </Typography>
+                                    <Typography variant="body2" color="textSecondary" component="p">
+                                        Message brief: {sentEmail.messageContent.substring(0, 30)}...
+                                </Typography>
+                                </div>
+                            </Link>
+                        </CardContent>
+                    </CardActionArea>
+                </Card>
             ))}
-        </>
+        </div>
     )
 }
 

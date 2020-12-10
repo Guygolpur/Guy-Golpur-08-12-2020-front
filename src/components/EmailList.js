@@ -1,21 +1,43 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import { makeStyles } from '@material-ui/core/styles'
+import Card from '@material-ui/core/Card'
+import CardActionArea from '@material-ui/core/CardActionArea'
+import CardContent from '@material-ui/core/CardContent'
+import Typography from '@material-ui/core/Typography'
+
+const useStyles = makeStyles({
+    root: {
+      maxWidth: '30%',
+    }
+  });
 
 const EmailList = ({ inboxesContent, accountEmailAddress }) => {
+    const classes = useStyles();
+
     return (
-        <div className="email-list-item-wrapper">
+        <>
             {inboxesContent.slice(0).reverse().map((email, key) => (
-                <div className="email-list-item-wrapper">
-                    <Link className="email-list-item" key={key} to={`/email/${email.id}/${accountEmailAddress}`}>
-                        <h3>from : {email.senderEmailAddress}</h3>
-                        <h5>{email.date}</h5>
-                        <h5>{email.time}</h5>
-                        <h4>Subject: {email.subject}</h4>
-                        <p>Message brief: {email.messageContent.substring(0, 30)}...</p>
-                    </Link>
-                </div>
+                <Card className={classes.root}>
+                <CardActionArea >
+                    <CardContent>
+                        <Link className="email-list-item" key={key} to={`/email/${email.id}/${accountEmailAddress}`}>
+                            <Typography gutterBottom variant="h5" component="h2" className="email-list-item">
+                                Subject: {email.subject.substring(0, 10)}...
+                            </Typography>
+                            <Typography variant="body2" color="textSecondary" component="p">
+                                {email.date} at {email.time}
+                            </Typography>
+                            <h3>from : {email.senderEmailAddress}</h3>
+                            <Typography variant="body2" color="textSecondary" component="p">
+                                Message brief: {email.messageContent.substring(0, 30)}...
+                            </Typography>
+                        </Link>
+                    </CardContent>
+                </CardActionArea>
+                </Card>
             ))}
-        </div>
+        </>
     )
 }
 

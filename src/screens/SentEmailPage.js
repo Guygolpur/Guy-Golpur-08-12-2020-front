@@ -12,7 +12,7 @@ const useStyles = makeStyles({
     }
 });
 
-const EmailPage = ({ match }) => {
+const SentEmailPage = ({ match }) => {
     var emailAccount = match.params.accountEmailAddress
     let senderEmailId = match.params.senderEmailId
     senderEmailId = parseInt(senderEmailId)
@@ -22,7 +22,7 @@ const EmailPage = ({ match }) => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const result = await fetch(`/api/email/${senderEmailId}/${emailAccount}`)
+                const result = await fetch(`/api/spec-email-sent/${senderEmailId}/${emailAccount}`)
                 const body = await result.json()
                 setEmailContent([body])
             } catch (err) {
@@ -52,7 +52,7 @@ const EmailPage = ({ match }) => {
 
     return (
         <div className="page-body">
-            <h1>Email content</h1>
+            <h1>Sent Email content</h1>
             <hr />
             <div className="page-body">{emailContent.map((content, key) => (
                 <Card className={classes.root}>
@@ -63,7 +63,7 @@ const EmailPage = ({ match }) => {
                         <Typography variant="body2" color="textSecondary" component="p">
                             {content.date} at {content.time}
                         </Typography>
-                        <h2>from : {content.senderEmailAddress}</h2>
+                        <h2>from: {content.receiverEmailAddress}</h2>
                         <div>Message:</div>
                         <p> {content.messageContent}</p>
                     </CardContent>
@@ -79,4 +79,4 @@ const EmailPage = ({ match }) => {
     )
 }
 
-export default EmailPage
+export default SentEmailPage
