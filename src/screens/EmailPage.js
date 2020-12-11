@@ -1,10 +1,16 @@
 import React, { useState, useEffect } from 'react'
+import { useHistory } from 'react-router-dom'
 import { makeStyles } from '@material-ui/core/styles'
 import Card from '@material-ui/core/Card'
 import CardActions from '@material-ui/core/CardActions'
 import CardContent from '@material-ui/core/CardContent'
 import Typography from '@material-ui/core/Typography'
 import Button from '@material-ui/core/Button'
+import Dialog from '@material-ui/core/Dialog'
+import DialogActions from '@material-ui/core/DialogActions'
+import DialogContent from '@material-ui/core/DialogContent'
+import DialogContentText from '@material-ui/core/DialogContentText'
+import DialogTitle from '@material-ui/core/DialogTitle'
 
 const useStyles = makeStyles({
     root: {
@@ -13,11 +19,14 @@ const useStyles = makeStyles({
 });
 
 const EmailPage = ({ match }) => {
+    const classes = useStyles();
+    const history = useHistory()
     var emailAccount = match.params.accountEmailAddress
     let senderEmailId = match.params.senderEmailId
     senderEmailId = parseInt(senderEmailId)
+
     const [emailContent, setEmailContent] = useState([]);
-    const classes = useStyles();
+    const [open, setOpen] = useState(false)
 
     useEffect(() => {
         const fetchData = async () => {
@@ -44,9 +53,19 @@ const EmailPage = ({ match }) => {
                     id: emailId,
                 })
             })
+            setOpen(false)
+            history.goBack()
         } catch (err) {
             console.log(`error: ${err}`)
         }
+    }
+
+    const handleClickOpen = () => {
+        setOpen(true);
+    }
+
+    const handleClose = () => {
+        setOpen(false);
     }
 
 
@@ -68,9 +87,30 @@ const EmailPage = ({ match }) => {
                         <p> {content.messageContent}</p>
                     </CardContent>
                     <CardActions>
-                        <Button size="small" color="primary" onClick={() => deleteEmailFromDb(emailAccount, content.id)}>
+                        <Button variant="outlined" color="primary" onClick={handleClickOpen}>
                             Delete
                         </Button>
+                        <Dialog
+                            open={open}
+                            onClose={handleClose}
+                            aria-labelledby="alert-dialog-title"
+                            aria-describedby="alert-dialog-description"
+                        >
+                            <DialogTitle id="alert-dialog-title">{"You are about to DELETE that email"}</DialogTitle>
+                            <DialogContent>
+                                <DialogContentText id="alert-dialog-description">
+                                    Pressing on the 'AGREE' button will delete this email permanently.
+                                </DialogContentText>
+                            </DialogContent>
+                            <DialogActions>
+                                <Button onClick={handleClose} color="primary">
+                                    Disagree
+                                </Button>
+                                <Button onClick={() => deleteEmailFromDb(emailAccount, content.id)} color="primary" autoFocus>
+                                    Agree
+                                </Button>
+                            </DialogActions>
+                        </Dialog>
                     </CardActions>
                 </Card>
             ))}
