@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import SentEmailPage from '../screens/SentEmailPage'
+import EmptyContentPage from '../screens/EmptyContentPage'
 import { Link } from 'react-router-dom'
 import { makeStyles } from '@material-ui/core/styles'
 import Card from '@material-ui/core/Card'
@@ -38,28 +38,35 @@ const SentEmailList = (props) => {
         <div className="page-body">
             <h1>Sent Items</h1>
             <hr />
-            {sentEmails.slice(0).reverse().map((sentEmail, key) => (
-                <Card className={classes.root}>
-                    <CardActionArea >
-                        <CardContent>
-                            <Link className="email-list-item" key={key} to={`/single-email-sent/${sentEmail.id}/${emailAccount}`}>
-                                <div key={key}>
-                                    <Typography gutterBottom variant="h5" component="h2" className="email-list-item">
-                                        Subject: {sentEmail.subject}
-                                    </Typography>
-                                    <h3>to : {sentEmail.receiverEmailAddress}</h3>
-                                    <Typography variant="body2" color="textSecondary" component="p">
-                                        {sentEmail.date} at {sentEmail.time}
-                                    </Typography>
-                                    <Typography variant="body2" color="textSecondary" component="p">
-                                        Message brief: {sentEmail.messageContent.substring(0, 30)}...
+            <div>
+                {sentEmails.length > 0 ?
+                    <div>
+                        {sentEmails.slice(0).reverse().map((sentEmail, key) => (
+                            <Card className={classes.root}>
+                                <CardActionArea >
+                                    <CardContent>
+                                        <Link className="email-list-item" key={key} to={`/single-email-sent/${sentEmail.id}/${emailAccount}`}>
+                                            <div key={key}>
+                                                <Typography gutterBottom variant="h5" component="h2" className="email-list-item">
+                                                    Subject: {sentEmail.subject}
+                                                </Typography>
+                                                <h3>to : {sentEmail.receiverEmailAddress}</h3>
+                                                <Typography variant="body2" color="textSecondary" component="p">
+                                                    {sentEmail.date} at {sentEmail.time}
+                                                </Typography>
+                                                <Typography variant="body2" color="textSecondary" component="p">
+                                                    Message brief: {sentEmail.messageContent.substring(0, 30)}...
                                 </Typography>
-                                </div>
-                            </Link>
-                        </CardContent>
-                    </CardActionArea>
-                </Card>
-            ))}
+                                            </div>
+                                        </Link>
+                                    </CardContent>
+                                </CardActionArea>
+                            </Card>
+                        ))
+                        }
+                    </div> : <EmptyContentPage />
+                }
+            </div>
         </div>
     )
 }

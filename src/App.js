@@ -13,7 +13,7 @@ import SentEmailList from './components/SentEmailList'
 import ComposeEmailForm from './components/ComposeEmailForm'
 import './App.css'
 
-const accountEmailAddress = "golpur@hotmail.com"
+const accountEmailAddress = "guygolpur@gmail.com"
 
 
 function App() {
