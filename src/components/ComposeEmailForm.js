@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import Button from '@material-ui/core/Button'
 
 const ComposeEmailForm = (props) => {
     const [receiverEmailAddress, setReceiverEmailAddress] = useState('')
@@ -6,7 +7,7 @@ const ComposeEmailForm = (props) => {
     const [emailContent, setEmailContent] = useState('')
     const senderEmailAddress = props.accountEmailAddress
 
-    const addComment = async () => {
+    const sendEmail = async () => {
         var today = new Date(), date, time
 
         date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
@@ -37,7 +38,9 @@ const ComposeEmailForm = (props) => {
                 Email Content:
             <textarea rows="12" cols="80" value={emailContent} onChange={(event) => setEmailContent(event.target.value)} />
             </label>
-            <button onClick={() => addComment()}>Send Email</button>
+            <Button variant="outlined" color="primary" onClick={() => sendEmail()}>
+                Send Email
+            </Button>
         </div>
     )
 }

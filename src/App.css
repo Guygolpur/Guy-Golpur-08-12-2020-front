@@ -46,13 +46,9 @@ nav a:hover {
   padding: 1.1%;
 }
 
-#send-email-form h3 {
-  margin-bottom: 16px;
-}
-
 #send-email-form input, textarea {
   display: block;
-  width: 300px;
+  width: 70%;
   padding: 8px;
   border-radius: 8px;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
