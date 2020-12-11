@@ -12,8 +12,8 @@ const ComposeEmailForm = (props) => {
     const sendEmail = async () => {
         var today = new Date(), date, time
 
-        date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
-        time = today.getHours() + ':' + (today.getMinutes());
+        date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate()
+        time = today.getHours() + ':' + (today.getMinutes())
 
         const result = await fetch(`/api/composeNewEmail`, {
             method: 'post',

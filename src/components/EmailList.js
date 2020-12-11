@@ -11,10 +11,10 @@ const useStyles = makeStyles({
     root: {
         maxWidth: '30%',
     }
-});
+})
 
 const EmailList = ({ inboxesContent, accountEmailAddress }) => {
-    const classes = useStyles();
+    const classes = useStyles()
 
     return (
         <div>

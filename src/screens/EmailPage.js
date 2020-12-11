@@ -16,16 +16,16 @@ const useStyles = makeStyles({
     root: {
         maxWidth: '75%',
     }
-});
+})
 
 const EmailPage = ({ match }) => {
-    const classes = useStyles();
+    const classes = useStyles()
     const history = useHistory()
     var emailAccount = match.params.accountEmailAddress
     let senderEmailId = match.params.senderEmailId
     senderEmailId = parseInt(senderEmailId)
 
-    const [emailContent, setEmailContent] = useState([]);
+    const [emailContent, setEmailContent] = useState([])
     const [open, setOpen] = useState(false)
 
     useEffect(() => {
@@ -39,7 +39,7 @@ const EmailPage = ({ match }) => {
             }
         }
         fetchData()
-    }, [emailAccount]);
+    }, [emailAccount])
 
     const deleteEmailFromDb = async (receiverEmailAddress, emailId) => {
         try {
@@ -61,11 +61,11 @@ const EmailPage = ({ match }) => {
     }
 
     const handleClickOpen = () => {
-        setOpen(true);
+        setOpen(true)
     }
 
     const handleClose = () => {
-        setOpen(false);
+        setOpen(false)
     }
 
 

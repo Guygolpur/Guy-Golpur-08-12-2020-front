@@ -16,7 +16,7 @@ const useStyles = makeStyles({
     root: {
         maxWidth: '75%',
     }
-});
+})
 
 const SentEmailPage = ({ match }) => {
     const classes = useStyles()
@@ -60,11 +60,11 @@ const SentEmailPage = ({ match }) => {
     }
 
     const handleClickOpen = () => {
-        setOpen(true);
+        setOpen(true)
     }
 
     const handleClose = () => {
-        setOpen(false);
+        setOpen(false)
     }
 
 

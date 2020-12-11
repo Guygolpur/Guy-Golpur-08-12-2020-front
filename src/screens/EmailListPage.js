@@ -4,7 +4,7 @@ import LoadingIndicator from '../components/LoadingIndicator'
 
 const EmailListPage = (props) => {
     var emailAccount = props.accountEmailAddress
-    const [emailList, setEmailList] = useState([]);
+    const [emailList, setEmailList] = useState([])
     const [loading, setLoading] = useState(false)
 
     useEffect(() => {
@@ -19,7 +19,7 @@ const EmailListPage = (props) => {
             }
         }
         fetchData()
-    }, [emailAccount]);
+    }, [emailAccount])
 
     var inboxesContent = []
     emailList.map((inbox, key) => (

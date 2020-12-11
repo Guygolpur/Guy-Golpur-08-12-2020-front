@@ -12,11 +12,11 @@ const useStyles = makeStyles((theme) => ({
     root: {
         maxWidth: '30%',
     }
-}));
+}))
 
 const SentEmailList = (props) => {
     var emailAccount = props.accountEmailAddress
-    const [sentEmails, setSentEmails] = useState([]);
+    const [sentEmails, setSentEmails] = useState([])
     const [loading, setLoading] = useState(false)
 
     const classes = useStyles()

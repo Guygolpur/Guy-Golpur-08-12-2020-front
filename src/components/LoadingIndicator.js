@@ -18,7 +18,7 @@ const LoadingIndicator = props => {
         <Backdrop className={classes.backdrop} open>
         <CircularProgress color="inherit" />
       </Backdrop>
-    );
+    )
 }
 
 export default LoadingIndicator
