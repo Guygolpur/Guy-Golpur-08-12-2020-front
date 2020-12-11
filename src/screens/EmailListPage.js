@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react'
 import EmailList from '../components/EmailList'
+import LoadingIndicator from '../components/LoadingIndicator'
 
 const EmailListPage = (props) => {
     var emailAccount = props.accountEmailAddress
     const [emailList, setEmailList] = useState([]);
+    const [loading, setLoading] = useState(false)
 
     useEffect(() => {
         const fetchData = async () => {
@@ -11,6 +13,7 @@ const EmailListPage = (props) => {
                 const result = await fetch(`/api/email-list?receiverEmailAddress=${emailAccount}`)
                 const body = await result.json()
                 setEmailList(body)
+                setLoading(true)
             } catch (err) {
                 console.log(`error: ${err}`)
             }
@@ -27,7 +30,8 @@ const EmailListPage = (props) => {
         <div className="page-body">
             <h1>Inbox</h1>
             <hr />
-            <EmailList inboxesContent={inboxesContent} accountEmailAddress={emailAccount} />
+
+            {loading ? <div><EmailList inboxesContent={inboxesContent} accountEmailAddress={emailAccount} /> </div>: <div><LoadingIndicator /></div>}
         </div>
     )
 }
