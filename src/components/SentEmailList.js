@@ -47,7 +47,7 @@ const SentEmailList = (props) => {
                         {sentEmails.length > 0 ?
                             <div>
                                 {sentEmails.slice(0).reverse().map((sentEmail, key) => (
-                                    <Card className={classes.root}>
+                                    <Card className={classes.root} key={key}>
                                         <CardActionArea >
                                             <CardContent>
                                                 <Link className="email-list-item" key={key} to={`/single-email-sent/${sentEmail.id}/${emailAccount}`}>

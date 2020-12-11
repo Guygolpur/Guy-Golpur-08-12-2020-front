@@ -41,7 +41,7 @@ const ComposeEmailForm = (props) => {
                         shrink: true,
                     }}
                     value={receiverEmailAddress} onChange={(event) => setReceiverEmailAddress(event.target.value)}
-                    required="true"
+                    required={true}
                     type="email"
                 />
                 <TextField
@@ -68,7 +68,7 @@ const ComposeEmailForm = (props) => {
                     }}
                     variant="outlined"
                     value={emailContent} onChange={(event) => setEmailContent(event.target.value)}
-                    multiline="true"
+                    multiline={true}
                     rows="17"
                 />
                 <Button variant="outlined" color="primary" type="submit">

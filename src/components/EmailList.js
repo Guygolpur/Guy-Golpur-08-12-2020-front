@@ -21,7 +21,7 @@ const EmailList = ({ inboxesContent, accountEmailAddress }) => {
             {inboxesContent.length > 0 ?
                 <div>
                     {inboxesContent.slice(0).reverse().map((email, key) => (
-                        <Card className={classes.root}>
+                        <Card className={classes.root} key={key}>
                             <CardActionArea >
                                 <CardContent>
                                     <Link className="email-list-item" key={key} to={`/email/${email.id}/${accountEmailAddress}`}>

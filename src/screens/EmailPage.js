@@ -39,7 +39,7 @@ const EmailPage = ({ match }) => {
             }
         }
         fetchData()
-    }, [emailAccount])
+    }, [emailAccount, senderEmailId])
 
     const deleteEmailFromDb = async (receiverEmailAddress, emailId) => {
         try {
@@ -74,7 +74,7 @@ const EmailPage = ({ match }) => {
             <h1>Email content</h1>
             <hr />
             <div className="page-body">{emailContent.map((content, key) => (
-                <Card className={classes.root}>
+                <Card className={classes.root} key={key}>
                     <CardContent key={key}>
                         <Typography gutterBottom variant="h5" component="h2" >
                             Subject: {content.subject}
