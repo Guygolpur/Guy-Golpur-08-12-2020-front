@@ -9,8 +9,17 @@ const HomePage = ({ login }) => {
 
     const loginWithEmail = (event) => {
         event.preventDefault()
-        localStorage.setItem("accountEmailAddress", userName)
-        login(userName)
+        var isValidateAccountSender = userName.localeCompare('sender@gmail.com')
+        var isValidateAccountReceiver = userName.localeCompare('receiver@gmail.com')
+
+        if ((isValidateAccountSender === 0) || (isValidateAccountReceiver === 0)) {
+            localStorage.setItem("accountEmailAddress", userName)
+            login(userName)
+        }
+        else {
+            localStorage.setItem("accountEmailAddress", '')
+            window.location.reload(true)
+        }
     }
 
     return (
