@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "Email App",
+  "name": "Email app - Fullstack Assignment - Messaging system",
   "icons": [
     {
       "src": "favicon.ico",
