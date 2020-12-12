@@ -3,12 +3,14 @@ import Button from '@material-ui/core/Button'
 import TextField from '@material-ui/core/TextField'
 
 
-const HomePage = () => {
+const HomePage = ({ login }) => {
 
-    const [receiverEmailAddress, setReceiverEmailAddress] = useState('')
+    const [userName, setUserName] = useState('')
 
     const loginWithEmail = (event) => {
         event.preventDefault()
+        localStorage.setItem("accountEmailAddress", userName)
+        login(userName)
     }
 
     return (
@@ -25,12 +27,12 @@ const HomePage = () => {
                     InputLabelProps={{
                         shrink: true,
                     }}
-                    value={receiverEmailAddress} onChange={(event) => setReceiverEmailAddress(event.target.value)}
+                    value={userName} onChange={(event) => setUserName(event.target.value)}
                     required={true}
                     type="email"
                     variant="outlined"
                 />
-                <Button variant="outlined" color="primary" type="submit" style={{marginLeft: '8px'}}>
+                <Button variant="outlined" color="primary" type="submit" style={{ marginLeft: '8px' }}>
                     Sign in
                 </Button>
             </form>
