@@ -1,3 +1,5 @@
+import React, { useState, useEffect } from 'react'
+
 import {
   BrowserRouter as Router,
   Route,
@@ -13,10 +15,16 @@ import SentEmailList from './components/SentEmailList'
 import ComposeEmailForm from './components/ComposeEmailForm'
 import './App.css'
 
-const accountEmailAddress = "guygolpur@gmail.com"
-
 
 function App() {
+  const [accountEmailAddress, setAccountEmailAddress] = useState('')
+
+  React.useEffect(() => {
+    console.log('eran: ', localStorage.getItem("accountEmailAddress"))
+
+    setAccountEmailAddress(localStorage.getItem("accountEmailAddress"))
+  }, [accountEmailAddress])
+
   return (
     <div className="App">
       <Router>
@@ -26,7 +34,7 @@ function App() {
           </div>
           <div style={{ width: '75%', height: '100%', display: 'flex', flexDirection: 'column' }}>
             <Switch>
-              <Route path="/" component={HomePage} exact />
+              <Route path="/" render={(props) => <HomePage {...props} login={username => setAccountEmailAddress(username)} />} exact />
               <Route path="/email-list" render={(props) => <EmailListPage {...props} accountEmailAddress={accountEmailAddress} />} />
               <Route path="/email/:senderEmailId/:accountEmailAddress" component={EmailPage} />
               <Route path="/sent-email-list" render={(props) => <SentEmailList {...props} accountEmailAddress={accountEmailAddress} />} />
