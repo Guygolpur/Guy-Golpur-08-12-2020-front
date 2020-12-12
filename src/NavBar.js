@@ -65,7 +65,7 @@ const NavBar = ({ accountEmailAddress }) => {
 
     return (
         <div style={{ width: '100%', height: '100%', display: 'flex', backgroundColor: '#c7dcff', flexDirection: 'column' }}>
-            <div style={{ width: '100%', height: '15%', display: 'flex', justifyContent: "center", alignItems: "center" }}>
+            <div style={{ width: '100%', height: '15%', display: 'block', textAlign: 'center' }}>
                 <div className={classes.root}>
                     <StyledBadge
                         overlap="circle"

@@ -7,7 +7,7 @@ const Explain = ({ login }) => {
         <>
             <h2>Please read the instructions</h2>
             <p>
-                There are two users that can be used to connect to the system and perform operations.
+                There are two users that can be used to connect to the system and perform actions.
             </p>
             <h3>
                 sender@gmail.com
@@ -16,7 +16,7 @@ const Explain = ({ login }) => {
                 receiver@gmail.com
             </h3>
             <p>
-                Once logged in, the following steps will be possible:
+                Once logged in, the following actions will be possible:
                 <ul>
                     <li>Sending an email message</li>
                     <li>Read incoming and outgoing e-mail</li>
@@ -28,7 +28,7 @@ const Explain = ({ login }) => {
                 The e-mail interface should be performed between the two users mentioned above.
             </p>
             <p>
-                It is clarified that at this stage sending and receiving e-mail will only be possible between the e-mail addresses mentioned above
+                It is clarified that at this stage sending and receiving e-mail will only be possible between the e-mail addresses mentioned above.
             </p>
         </>
     )
