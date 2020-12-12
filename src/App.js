@@ -20,8 +20,6 @@ function App() {
   const [accountEmailAddress, setAccountEmailAddress] = useState('')
 
   React.useEffect(() => {
-    console.log('eran: ', localStorage.getItem("accountEmailAddress"))
-
     setAccountEmailAddress(localStorage.getItem("accountEmailAddress"))
   }, [accountEmailAddress])
 
