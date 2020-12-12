@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import Badge from '@material-ui/core/Badge'
 import Avatar from '@material-ui/core/Avatar'
@@ -52,7 +52,16 @@ const logOut = () => {
 
 const NavBar = ({ accountEmailAddress }) => {
     const classes = useStyles()
+    const [isConnect, setIsConnect] = useState('')
 
+    useEffect(() => {
+        if(accountEmailAddress) {
+            setIsConnect('dot')
+        }
+        else {
+            setIsConnect('')
+        }
+      }, [accountEmailAddress])
 
     return (
         <div style={{ width: '100%', height: '100%', display: 'flex', backgroundColor: '#c7dcff', flexDirection: 'column' }}>
@@ -64,7 +73,7 @@ const NavBar = ({ accountEmailAddress }) => {
                             vertical: 'bottom',
                             horizontal: 'right',
                         }}
-                        variant="dot"
+                        variant={`${isConnect}`}
                     >
                         <Avatar alt="badge" >{accountEmailAddress.charAt(0).toUpperCase()}</Avatar>
                     </StyledBadge>

@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import Button from '@material-ui/core/Button'
 import TextField from '@material-ui/core/TextField'
-
+import Explain from '../components/Explain'
 
 const HomePage = ({ login }) => {
 
@@ -15,7 +15,7 @@ const HomePage = ({ login }) => {
 
     return (
         <div className="page-body">
-            <h1>Welcome</h1>
+            <Explain />
             <form onSubmit={loginWithEmail}>
                 <TextField
                     id="standard-full-width"
